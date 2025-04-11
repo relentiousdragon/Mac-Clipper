@@ -1,6 +1,9 @@
 # Mac-Clipper
 Clipboard Manager for Mac OS, Copy and Paste whenever you need them, customizable hotkeys, pins, image pastes and more!
 
+### NOTE:
+Any Animated Images in the clipboard won't animate and will always get pasted as a static .png image. (Planning to add support for this in a future update, if you have a solution then feel free to open a pull request)
+
 ## Features
 - **Clipboard History**: Automatically saves text and image clipboard entries.
 - **Global Hotkey**: Quickly toggle the app using a customizable hotkey (default: `⌘ + ⌥ + V`).
