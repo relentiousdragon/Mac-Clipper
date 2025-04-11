@@ -53,7 +53,7 @@ Mac Clipper requires accessibility permissions to listen for global hotkeys. If 
 `System Settings > Privacy & Security > Accessibility`.
 
 ## License
-This project is licensed under the GNU General Public License v3.0 License. See the `LICENSE` tab for details.
+This project is licensed under the GNU General Public License v3.0 License. See the `LICENSE` file for details.
 
 
 <a href="https://www.flaticon.com/free-icons/paste" title="paste icons">Paste icons created by Pixel perfect - Flaticon</a>
