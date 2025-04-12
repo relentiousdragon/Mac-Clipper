@@ -49,7 +49,7 @@ To build the app using PyInstaller, follow these steps:
    ```
 
 3. **Locate the Built App**:
-   After the build process completes, the app will be located in the `dist/Mac Clipper.app` directory.
+   After the build process completes, the app will be located at `dist/Mac Clipper.app` directory.
 
 ## Accessibility Permissions
 Mac Clipper requires accessibility permissions to listen for global hotkeys. If permissions are not granted, the app will not function correctly. You can enable these permissions in:
