@@ -620,16 +620,20 @@ class ClipboardManager(QMainWindow):
             
             if clip["type"] == "image":
                 b64_str = clip["data"][len("image:"):]
+                pin_html = (
+                    '<div style="position: absolute; top: 5px; right: 5px; background: rgba(45,45,45,0.7); '
+                    'border-radius: 50%; width: 20px; height: 20px; display: flex; '
+                    'justify-content: center; align-items: center;">'
+                    '<span style="color:#4a6da7; font-size:12px;">📌</span>'
+                    '</div>'
+                    if clip.get("pinned") else ""
+                )
                 html = f'''
                 <div style="display: flex; flex-direction: column; align-items: center;">
                     <div style="position: relative; margin-bottom: 5px;">
                         <img src="data:image/png;base64,{b64_str}" 
                              style="display: block; max-width: 200px; max-height: 200px; border-radius: 4px;"/>
-                        {'''<div style="position: absolute; top: 5px; right: 5px; background: rgba(45,45,45,0.7); 
-                            border-radius: 50%; width: 20px; height: 20px; display: flex; 
-                            justify-content: center; align-items: center;">
-                            <span style="color:#4a6da7; font-size:12px;">📌</span>
-                        </div>''' if clip.get("pinned") else ""}
+                        {pin_html}
                     </div>
                     <div style="color: #888; font-size: 11px; margin-top: 4px;">
                         {clip["time"]}
@@ -648,13 +652,14 @@ class ClipboardManager(QMainWindow):
                     effective_theme = self.get_system_theme()
                 
                 text_color = "#4a6da7" if clip.get("pinned") else ("#333" if effective_theme == "light" else "#f0f0f0")
-                label.setText(
-                    f'<div style="color: {text_color}; font-size: 13px;">'
-                    f'{display_text}</div>'
-                    f'<div style="color: #888; font-size: 11px; margin-top: 4px;">'
-                    f'{clip["time"]} {"<span style=\'color: #4a6da7;\'>📌</span>" if clip.get("pinned") else ""}'
-                    f'</div>'
-                )
+            pin_html = '<span style="color: #4a6da7;">📌</span>' if clip.get("pinned") else ""
+            label.setText(
+                f'<div style="color: {text_color}; font-size: 13px;">'
+                f'{display_text}</div>'
+                f'<div style="color: #888; font-size: 11px; margin-top: 4px;">'
+                f'{clip["time"]} {pin_html}'
+                f'</div>'
+            )
             
             min_height = 80 if clip["type"] == "text" else 220
             list_item.setSizeHint(label.sizeHint().expandedTo(QSize(label.sizeHint().width(), min_height)))
